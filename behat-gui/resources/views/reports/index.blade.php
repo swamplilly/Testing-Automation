@@ -37,10 +37,10 @@
                             <div class="panel-heading">Behat Color Key</div>
                                 <div class="panel-body">
                                     <ul>
-                                        <li><span style="color:green"><b>GREEN:</b></span> Successfully executed by Behat.</li>
-                                        <li><span style="color:blue"><b>BLUE:</b></span> Skipped over by Behat, not executed.</li>
-                                        <li><span style="color:yellow"><b>YELLOW:</b></span> Skipped over by Behat due to syntax error</li>
-                                        <li><span style="color:red"><b>RED:</b></span> Executed by Behat, returned with error.</li>
+                                        <li><span class="label label-success">Green</span>: Successfully executed by Behat.</li>
+                                        <li><span class="label label-primary">Blue</span>: Skipped over by Behat, not executed.</li>
+                                        <li><span class="label label-warning">Yellow</span>: Skipped over by Behat due to syntax error</li>
+                                        <li><span class="label label-danger">Red</span> Executed by Behat, returned with error.</li>
                                     </ul>
                                 </div>
                         </div>
