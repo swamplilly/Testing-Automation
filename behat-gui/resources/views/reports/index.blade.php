@@ -32,6 +32,19 @@
                                 @endif
                             </div>
                         </div>
+<!-- Lilly wrote stuff here -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Behat Color Key</div>
+                                <div class="panel-body">
+                                    <ul>
+                                        <li><span style="color:green"><b>GREEN:</b></span> Successfully executed by Behat.</li>
+                                        <li><span style="color:blue"><b>BLUE:</b></span> Skipped over by Behat, not executed.</li>
+                                        <li><span style="color:yellow"><b>YELLOW:</b></span> Skipped over by Behat due to syntax error</li>
+                                        <li><span style="color:red"><b>RED:</b></span> Executed by Behat, returned with error.</li>
+                                    </ul>
+                                </div>
+                        </div>
+<!-- End whatever Lilly wrote-->
                         @if($r->comment_complete == 1)
                             @if($r->comment != null)
                             <div class="panel panel-default">
