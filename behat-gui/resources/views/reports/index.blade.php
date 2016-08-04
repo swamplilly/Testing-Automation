@@ -21,15 +21,19 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">Test</div>
                             <div class="panel-body">
-                                @if($test = \App\Test::where('id', '=', $r->test_id)->first())
+                                @if($test = \App\Test::where('id', '=', $r->test_id)->withTrashed()->first())
                                     Name: <a href="{{ route('tests.show', $test->id)  }}">{{ $test->name  }}</a><br />
                                     <b>Result Info:</b><br />
                                     Created: {{ $r->created_at  }}<br />
                                     Updated: {{ $r->updated_at  }}
+                                    @if($r->jira_key)
+                                        <br />JIRA: <a target="_blank" href="{{ config('jira.ticket')  }}{{ $r->jira_key  }}">Ticket</a>
+                                    @endif
                                 @endif
                             </div>
                         </div>
                         @if($r->comment_complete == 1)
+                            @if($r->comment != null)
                             <div class="panel panel-default">
                                 <div class="panel-heading">Analysis of Message</div>
                                 <div class="panel-body">
@@ -40,6 +44,7 @@
                                     </ul>
                                 </div>
                             </div>
+                            @endif
                         @endif
                     </div>
                 </div>

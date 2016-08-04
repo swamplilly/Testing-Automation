@@ -56,8 +56,7 @@ class VariableController extends Controller {
         $json = json_encode($json_array);
         $set = json_encode($sets_array);
 
-
-		$variable->key = $main['key'];
+		$variable->key = str_replace("&amp;", "&", $main['key']);
         $variable->value = $json;
         $variable->sets = $set;
 		$variable->save();
@@ -142,4 +141,22 @@ class VariableController extends Controller {
 		return redirect()->route('variables.index')->with('message', 'Item deleted successfully.');
 	}
 
+	public function delete_value($id, $set){
+		$var = Variable::where('id', '=', $id)->first();
+		$sets = json_decode($var->sets, true);
+		$value = json_decode($var->value, true);
+
+		foreach($sets as $k => $s){
+			if($set == $s){
+				unset($sets[$k], $value[$k]);
+			}
+		}
+
+		$var->sets = json_encode($sets);
+		$var->value = json_encode($value);
+		$var->save();
+
+		return redirect()->route('variables.index')->with('message', 'Variable value deleted successfully.');
+
+	}
 }

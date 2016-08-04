@@ -13,9 +13,10 @@ class CreateCategoryItemsTable extends Migration
     public function up()
     {
         Schema::create('categories_items', function(Blueprint $table){
-          $table->increments('id');
-          $table->string('header');
-          $table->string('value');
+            $table->increments('id');
+            $table->string('header');
+            $table->string('value');
+            $table->timestamps();
         });
     }
 
