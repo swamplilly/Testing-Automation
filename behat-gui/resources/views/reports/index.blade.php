@@ -36,12 +36,10 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Behat Color Key</div>
                                 <div class="panel-body">
-                                    <ul>
-                                        <li><span class="label label-success">Green</span>: Successfully executed by Behat.</li>
-                                        <li><span class="label label-primary">Blue</span>: Skipped over by Behat, not executed.</li>
-                                        <li><span class="label label-warning">Yellow</span>: Skipped over by Behat due to syntax error</li>
-                                        <li><span class="label label-danger">Red</span> Executed by Behat, returned with error.</li>
-                                    </ul>
+                                        <span class="label label-success">Green</span>: Successfully executed.<br />
+                                        <span class="label label-primary">Blue</span>: Skipped over.<br />
+                                        <span class="label label-warning">Yellow</span>: Skipped over due to syntax error.<br />
+                                        <span class="label label-danger">Red</span> Executed, returned with error.<br />
                                 </div>
                         </div>
 <!-- End whatever Lilly wrote-->
