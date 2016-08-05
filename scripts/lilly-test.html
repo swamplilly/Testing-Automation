@@ -1,0 +1,192 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<head>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</head>
+
+
+<!-- CSS -->
+
+
+<style>
+.deleted {
+    background-color: red;
+}
+</style>
+
+
+<!-- JAVASCRIPT -->
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var check_count = 0;
+    $("input:checkbox").change(function(){
+        if (this.id == "check-all") {
+            if (this.checked) {
+                $(":checkbox:not(#check-all)").each(function(){
+                    this.checked = true;
+                });
+            } else {
+                $(":checkbox:not(#check-all)").each(function(){
+                    this.checked = false;
+                });
+            }
+        }
+
+        var check_count = $("[type='checkbox']:checked").length;
+
+        if(check_count > 0) {
+            $("#delete").prop("disabled", false);
+            $("#add-category").prop("disabled", false);
+        } else {
+            $("#delete").prop("disabled", true);
+            $("#add-category").prop("disabled", true);
+        }
+
+        //window.alert(check_count);
+    });
+
+    $("#delete").click(function(){
+        $("tr:has(:checked):not(#table-header)").addClass("deleted");
+    });
+});
+</script>
+
+
+<!-- HTML -->
+<table>
+    <tr style="height:35px">
+        <td>
+            <!--div class="btn-group"-->
+                <button id="add-category" class="btn btn-primary" disabled="true">Add category</button>
+            <!--/div-->
+            <!--div class="btn-group"-->
+                <button id="delete" class="btn btn-danger" disabled="true">Delete</button>
+            <!--/div-->
+        </td>
+    </tr>
+</table>
+
+
+<br>
+
+
+<table id="data" class="table table-condensed table-bordered">
+
+    <!--thead-->
+        <tr id="table-header">
+            <th>SELECT <form><input id="check-all" type="checkbox" style="width: 25px; height: 25px"></form></th>
+            <th>NAME</th>
+            <th>FILE</th>
+            <th>LAST STATUS</th>
+            <th>CATEGORIES</th>
+            <th class="text-right">OPTIONS</th>
+        </tr>
+    <!--/thead-->
+
+    <tbody>
+        <tr>
+            <td>
+                <form>
+                    <input type="checkbox" style="width: 25px; height: 25px">
+                </form>
+            </td>
+            <td>3</td>
+            <td><span class="btn btn-xs btn-default">Show/Hide Test Code</span></td>
+            <td><span class="label label-primary">Not yet run</span></td>
+            <td>None</td>
+            <td class="text-right">
+                <table class="pull-right">
+                    <tr style="height: 35px">
+                        <td>
+                            <div class=btn-group>
+                                <button class="btn btn-info"><i class="glyphicon glyphicon-folder-open"></i> Download Code</button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i> View Results</button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i> Edit Test</button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-success"><i class="glyphicon glyphicon-refresh"></i> Run Test</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form>
+                    <input type="checkbox" style="width: 25px; height: 25px">
+                </form>
+            </td>
+            <td>2</td>
+            <td><span class="btn btn-xs btn-default">Show/Hide Test Code</span></td>
+            <td><span class="label label-primary">Not yet run</span></td>
+            <td>None</td>
+            <td class="text-right">
+                <table class="pull-right">
+                    <tr style="height: 35px">
+                        <td>
+                            <div class=btn-group>
+                                <button class="btn btn-info"><i class="glyphicon glyphicon-folder-open"></i> Download Code</button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i> View Results</button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i> Edit Test</button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-success"><i class="glyphicon glyphicon-refresh"></i> Run Test</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form>
+                    <input type="checkbox" style="width: 25px; height: 25px">
+                </form>
+            </td>
+            <td>1</td>
+            <td><span class="btn btn-xs btn-default">Show/Hide Test Code</span></td>
+            <td><span class="label label-primary">Not yet run</span></td>
+            <td>None</td>
+            <td class="text-right">
+                <table class="pull-right">
+                    <tr style="height: 35px">
+                        <td>
+                            <div class=btn-group>
+                                <button class="btn btn-info"><i class="glyphicon glyphicon-folder-open"></i> Download Code</button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i> View Results</button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i> Edit Test</button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-success"><i class="glyphicon glyphicon-refresh"></i> Run Test</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

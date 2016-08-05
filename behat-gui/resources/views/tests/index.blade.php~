@@ -72,22 +72,9 @@
     <div class="row">
         <div class="col-md-12">
             @if($tests->count())
-<!-- LILLY ADDED STUFF -->
-
-                <table>
-                    <tr style="height:35px">
-                        <button id="add-category" class="btn btn-primary" disabled="true">Add category</button>
-                        <button id="delete" class="btn btn-danger" disabled="true">Delete</button>
-                    </tr>
-                </table>
-
-<!-- END LILLY ADDED STUFF -->
                 <table class="table table-condensed table-striped table-bordered">
                     <thead>
                         <tr>
-<!-- LILLY ADDED STUFF -->
-                            <th>SELECT <form><input id="check-all" type="checkbox" style="width: 25px; height: 25px"></form></th>
-<!-- END LILLY ADDED STUFF -->
                             <th>NAME</th>
                             <th>FILE</th>
                             <th>LAST STATUS</th>
@@ -100,9 +87,6 @@
                         @foreach($tests as $test)
                             @if(!$test->trashed())
                             <tr>
-<!-- LILLY ADDED STUFF -->
-                                <td><form><input type="checkbox" style="width: 25px; height: 25px"></form></td>
-<!-- END LILLY ADDED STUFF -->
                                 <td>{{$test->name}}<br />@if(isset($tags[$test->id])) <ul> @foreach($tags[$test->id] as $t) <li>{{ $t  }}</li>  @endforeach </ul> @endif</td>
                                 <td><a href="#" id="code_{{ $test->id  }}" class="btn btn-xs btn-default">Show/Hide Test Code</a><br /><br /><div id="toggle_{{ $test->id  }}" class="hidden code gherkin">{!! str_replace("\n", "<br />", str_replace(" ", "&nbsp;", file_get_contents($test->location)))   !!}</div></td>
                                 <td>
@@ -149,9 +133,7 @@
                                             @endforeach
                                           </ul>
                                         </div>
-<!-- LILLY DELETED STUFF
                                         <a class="btn btn-xs btn-info" href="{{ route('tests.category', $test->id) }}"><i class="glyphicon glyphicon-folder-open"></i> Add Category</a>
-END LILLY DELETED STUFF -->
                                         <a class="btn btn-xs btn-primary" href="{{ route('tests.show', $test->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View Results</a>
                                         </td>
                                         </tr>
@@ -171,13 +153,11 @@ END LILLY DELETED STUFF -->
                                             </ul>
                                         </div>
                                         <a class="btn btn-xs btn-warning" href="{{ route('tests.edit', $test->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit Test</a>
-<!-- LILLY DELETED STUFF
                                         <form action="{{ route('tests.destroy', $test->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete Test</button>
                                         </form>
-END LILLY DELETED STUFF -->
                                             </td></tr>
                                     </table>
                                 </td>
@@ -210,44 +190,4 @@ END LILLY DELETED STUFF -->
             window.location.replace('/tests/search/'+$("#search_value").val());
         });
     </script>
-
-<!-- LILLY ADDED STUFF -->
-
-<script type="text/javascript">
-$(document).ready(function(){
-    var check_count = 0;
-    $("input:checkbox").change(function(){
-        if (this.id == "check-all") {
-            if (this.checked) {
-                $(":checkbox:not(#check-all)").each(function(){
-                    this.checked = true;
-                });
-            } else {
-                $(":checkbox:not(#check-all)").each(function(){
-                    this.checked = false;
-                });
-            }
-        }
-
-        var check_count = $("[type='checkbox']:checked").length;
-
-        if(check_count > 0) {
-            $("#delete").prop("disabled", false);
-            $("#add-category").prop("disabled", false);
-        } else {
-            $("#delete").prop("disabled", true);
-            $("#add-category").prop("disabled", true);
-        }
-
-        //window.alert(check_count);
-    });
-
-    $("#delete").click(function(){
-        $("tr:has(:checked):not(#table-header)").addClass("deleted");
-    });
-});
-</script>
-
-<!-- END LILLY ADDED STUFF -->
-
 @endsection
